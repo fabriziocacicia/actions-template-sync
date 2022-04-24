@@ -23,6 +23,9 @@ inputs:
   hostname:
     description: '[optional] the hostname of the GitHub repository'
     default: 'github.com'
+  commit_type:
+    description: '[optional] the semantic type of the commit. (i.e. chore, build, feat..) Default is chore'
+    default: 'chore'
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
@@ -33,3 +36,4 @@ runs:
     SSH_PRIVATE_KEY_SRC: ${{ inputs.source_repo_ssh_private_key }}
     PR_LABELS: ${{ inputs.pr_labels }}
     HOSTNAME: ${{ inputs.hostname }}
+    COMMIT_TYPE: ${{ inputs.commit_type }}
