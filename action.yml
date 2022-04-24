@@ -1,6 +1,6 @@
-name: 'actions-template-sync'
+name: 'template-sync-action'
 description: 'Synchronises changes of the template repository'
-author: 'AndreasAugustin'
+author: 'Fabrizio Cacicia'
 branding:
   icon: cloud
   color: green
