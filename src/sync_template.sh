@@ -18,6 +18,11 @@ if [[ -z "${PR_LABELS}" ]]; then
   exit 1;
 fi
 
+if [[ -z "${COMMIT_TYPE}" ]]; then
+  echo "::error::Missing env variable 'COMMIT_TYPE'" >&2;
+  exit 1;
+fi
+
 if ! [ -x "$(command -v gh)" ]; then
   echo "::error::github-cli gh is not installed. 'https://github.com/cli/cli'" >&2;
   exit 1;
@@ -32,7 +37,7 @@ TEMPLATE_VERSION_FILE_NAME=".templateversionrc"
 TEMPLATE_SYNC_IGNORE_FILE_NAME=".templatesyncignore"
 TEMPLATE_REMOTE_GIT_HASH=$(git ls-remote "${SOURCE_REPO}" HEAD | awk '{print $1}')
 NEW_TEMPLATE_GIT_HASH=$(git rev-parse --short "${TEMPLATE_REMOTE_GIT_HASH}")
-NEW_BRANCH="chore/template_sync_${NEW_TEMPLATE_GIT_HASH}"
+NEW_BRANCH="${COMMIT_TYPE}/template_sync_${NEW_TEMPLATE_GIT_HASH}"
 
 echo "::group::Check new changes"
 echo "::debug::new Git HASH ${NEW_TEMPLATE_GIT_HASH}"
@@ -77,7 +82,7 @@ then
   git checkout -- .
 fi
 
-git commit -m "chore(template): merge template changes :up:"
+git commit -m "${COMMIT_TYPE}(template): merge template changes :up:"
 
 echo "::debug::push changes"
 git push --set-upstream origin "${NEW_BRANCH}"
