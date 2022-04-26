@@ -23,6 +23,11 @@ if [[ -z "${COMMIT_TYPE}" ]]; then
   exit 1;
 fi
 
+if [[ -z "${COMMIT_SCOPE}" ]]; then
+  echo "::error::Missing env variable 'COMMIT_SCOPE'" >&2;
+  exit 1;
+fi
+
 if ! [ -x "$(command -v gh)" ]; then
   echo "::error::github-cli gh is not installed. 'https://github.com/cli/cli'" >&2;
   exit 1;
@@ -82,7 +87,7 @@ then
   git checkout -- .
 fi
 
-git commit -m "${COMMIT_TYPE}(template): merge template changes :up:"
+git commit -m "${COMMIT_TYPE}(${COMMIT_SCOPE}): merge template changes :up:"
 
 echo "::debug::push changes"
 git push --set-upstream origin "${NEW_BRANCH}"

@@ -26,6 +26,9 @@ inputs:
   commit_type:
     description: '[optional] the semantic type of the commit. (i.e. chore, build, feat..) Default is chore'
     default: 'chore'
+  commit_scope:
+    description: '[optional] the scope of the commit. Default is template'
+    default: 'template'
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
@@ -37,3 +40,4 @@ runs:
     PR_LABELS: ${{ inputs.pr_labels }}
     HOSTNAME: ${{ inputs.hostname }}
     COMMIT_TYPE: ${{ inputs.commit_type }}
+    COMMIT_SCOPE: ${{ inputs.commit_scope }}
