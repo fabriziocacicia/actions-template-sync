@@ -31,7 +31,7 @@ inputs:
     default: 'template'
   commit_message:
     description: '[optional] the scope of the commit. Default is "merge new template changes"'
-    default: 'merge new template changes'
+    default: 'merge template changes'
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
