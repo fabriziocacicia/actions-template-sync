@@ -33,6 +33,13 @@ if [[ -z "${COMMIT_MESSAGE}" ]]; then
   exit 1;
 fi
 
+if [[ -z "${PR_TITLE}" ]]; then
+  echo "::error::Missing env variable 'PR_TITLE'" >&2;
+  exit 1;
+fi
+
+echo $PR_TITLE
+
 if ! [ -x "$(command -v gh)" ]; then
   echo "::error::github-cli gh is not installed. 'https://github.com/cli/cli'" >&2;
   exit 1;
