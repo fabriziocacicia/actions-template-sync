@@ -29,6 +29,9 @@ inputs:
   commit_scope:
     description: '[optional] the scope of the commit. Default is template'
     default: 'template'
+  commit_message:
+    description: '[optional] the scope of the commit. Default is "merge new template changes"'
+    default: 'merge template changes'
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
@@ -41,3 +44,4 @@ runs:
     HOSTNAME: ${{ inputs.hostname }}
     COMMIT_TYPE: ${{ inputs.commit_type }}
     COMMIT_SCOPE: ${{ inputs.commit_scope }}
+    COMMIT_MESSAGE: ${{ inputs.commit_message }}
