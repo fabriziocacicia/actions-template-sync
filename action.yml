@@ -32,6 +32,9 @@ inputs:
   commit_message:
     description: '[optional] the scope of the commit. Default is "merge new template changes"'
     default: 'merge template changes'
+  pr_title:
+    description: '[optional] the title of the pr.'
+    default: ${{ inputs.commit_message }}
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
