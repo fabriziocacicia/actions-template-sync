@@ -32,6 +32,7 @@ if [[ -z "${COMMIT_MESSAGE}" ]]; then
   echo "::error::Missing env variable 'COMMIT_MESSAGE'" >&2;
   exit 1;
 fi
+COMMIT_MESSAGE="${COMMIT_TYPE}(${COMMIT_SCOPE}): ${COMMIT_MESSAGE}"
 
 if [[ -z "${PR_TITLE}" ]]; then
   PR_TITLE="${COMMIT_MESSAGE}"
@@ -96,7 +97,7 @@ then
   git checkout -- .
 fi
 
-git commit -m "${COMMIT_TYPE}(${COMMIT_SCOPE}): ${COMMIT_MESSAGE}"
+git commit -m "$COMMIT_MESSAGE"
 
 echo "::debug::push changes"
 git push --set-upstream origin "${NEW_BRANCH}"
