@@ -47,3 +47,4 @@ runs:
     COMMIT_TYPE: ${{ inputs.commit_type }}
     COMMIT_SCOPE: ${{ inputs.commit_scope }}
     COMMIT_MESSAGE: ${{ inputs.commit_message }}
+    PR_TITLE: ${{ inputs.pr_title }}
