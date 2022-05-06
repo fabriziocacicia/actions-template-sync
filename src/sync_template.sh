@@ -32,6 +32,11 @@ if [[ -z "${COMMIT_MESSAGE}" ]]; then
   echo "::error::Missing env variable 'COMMIT_MESSAGE'" >&2;
   exit 1;
 fi
+COMMIT_MESSAGE="${COMMIT_TYPE}(${COMMIT_SCOPE}): ${COMMIT_MESSAGE}"
+
+if [[ -z "${PR_TITLE}" ]]; then
+  PR_TITLE="${COMMIT_MESSAGE}"
+fi
 
 if ! [ -x "$(command -v gh)" ]; then
   echo "::error::github-cli gh is not installed. 'https://github.com/cli/cli'" >&2;
@@ -92,7 +97,7 @@ then
   git checkout -- .
 fi
 
-git commit -m "${COMMIT_TYPE}(${COMMIT_SCOPE}): ${COMMIT_MESSAGE}"
+git commit -m "$COMMIT_MESSAGE"
 
 echo "::debug::push changes"
 git push --set-upstream origin "${NEW_BRANCH}"
@@ -100,7 +105,7 @@ echo "::endgroup::"
 
 echo "::group::create pull request"
 gh pr create \
-  --title "upstream merge template repository" \
+  --title "${PR_TITLE}" \
   --body "Merge ${SOURCE_REPO_PATH} ${NEW_TEMPLATE_GIT_HASH}" \
   -B "${UPSTREAM_BRANCH}" \
   -l "${PR_LABELS}"
