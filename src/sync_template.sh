@@ -7,7 +7,6 @@ if [[ -z "${SOURCE_REPO}" ]]; then
   echo "::error::Missing env variable 'SOURCE_REPO'" >&2;
   exit 1;
 fi
-echo "${SOURCE_REPO}"
 
 if [[ -z "${UPSTREAM_BRANCH}" ]]; then
   echo "::error::Missing env variable 'UPSTREAM_BRANCH'" >&2;
@@ -107,7 +106,7 @@ echo "::endgroup::"
 echo "::group::create pull request"
 gh pr create \
   --title "${PR_TITLE}" \
-  --body "Merge ${SOURCE_REPO_PATH} ${NEW_TEMPLATE_GIT_HASH}" \
+  --body "Merge ${SOURCE_REPO_PATH} ${TEMPLATE_REMOTE_GIT_HASH}" \
   -B "${UPSTREAM_BRANCH}" \
   -l "${PR_LABELS}"
 echo "::endgroup::"
