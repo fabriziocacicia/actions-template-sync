@@ -103,6 +103,8 @@ echo "::debug::push changes"
 git push --set-upstream origin "${NEW_BRANCH}"
 echo "::endgroup::"
 
+env
+
 echo "::group::create pull request"
 gh pr create \
   --title "${PR_TITLE}" \
