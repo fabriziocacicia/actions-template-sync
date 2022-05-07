@@ -29,8 +29,7 @@ if [[ -z "${COMMIT_SCOPE}" ]]; then
 fi
 
 if [[ -z "${COMMIT_MESSAGE}" ]]; then
-  echo "::error::Missing env variable 'COMMIT_MESSAGE'" >&2;
-  exit 1;
+  COMMIT_MESSAGE="merge ${SOURCE_REPO_PATH} changes"
 fi
 COMMIT_MESSAGE="${COMMIT_TYPE}(${COMMIT_SCOPE}): ${COMMIT_MESSAGE}"
 
