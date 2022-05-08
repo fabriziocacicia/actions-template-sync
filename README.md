@@ -63,7 +63,7 @@ You will receive a pull request within your repository if there are some changes
 | hostname | `[optional]` the hostname of the repository | `false` | `github.com` |
 | commit_type | `[optional]` the semantic type of the commit made in the branch created for the PR | `false` | `chore` |
 | commit_scope | `[optional]` the scope of the commit made in the branch created for the PR | `false` | `template` |
-| commit_message | `[optional]` the message of the commit made in the branch created for the PR | `false` | `merge new template changes` |
+| commit_message | `[optional]` the message of the commit made in the branch created for the PR | `false` | `merge <template_repo_owner/template_repo_name> changes` |
 | pr_title | `[optional]` the title of the pr | `false` | Same as commit_message |
 
 ### Example
