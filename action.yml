@@ -30,7 +30,7 @@ inputs:
     description: '[optional] the scope of the commit. Default is template'
     default: 'template'
   commit_message:
-    description: '[optional] the message of the commit. Default is "merge new template changes"'
+    description: '[optional] the message of the commit. Default is "merge <template_repo_owner/template_repo_name> changes"'
   pr_title:
     description: '[optional] the title of the pr. Default is the same as commit_message input'
 runs:
