@@ -61,6 +61,10 @@ You will receive a pull request within your repository if there are some changes
 | source_repo_ssh_private_key | `[optional]` private ssh key for the source repository. E.q. useful if using a private template repository. [see](#private-template-repository)| `false` |  |
 | pr_labels | `[optional]` comma separated list. [pull request labels][pr-labels]. Must be already created. | `false` | `chore,template_sync`  |
 | hostname | `[optional]` the hostname of the repository | `false` | `github.com` |
+| commit_type | `[optional]` the semantic type of the commit made in the branch created for the PR | `false` | `chore` |
+| commit_scope | `[optional]` the scope of the commit made in the branch created for the PR | `false` | `template` |
+| commit_message | `[optional]` the message of the commit made in the branch created for the PR | `false` | `merge new template changes` |
+| pr_title | `[optional]` the title of the pr | `false` | Same as commit_message |
 
 ### Example
 
