@@ -32,7 +32,7 @@ inputs:
   commit_message:
     description: '[optional] the message of the commit. Default is "merge new template changes"'
   pr_title:
-    description: '[optional] the title of the pr.'
+    description: '[optional] the title of the pr. Default is the same as commit_message input'
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
