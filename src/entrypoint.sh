@@ -14,7 +14,7 @@ if [[ -z "${SOURCE_REPO_PATH}" ]]; then
 fi
 
 if [ "${SOURCE_REPO_PATH}" == "${GITHUB_REPOSITORY}" ]; then
-  echo "::error::Source repository (template) and target repository are the same. It's not possibile to sync a template with itself."
+  echo "::warning::Source repository (template) and target repository are the same. It's not possibile to sync a template with itself."
   exit 0
 fi
 
