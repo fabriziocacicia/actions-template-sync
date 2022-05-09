@@ -13,6 +13,11 @@ if [[ -z "${SOURCE_REPO_PATH}" ]]; then
   exit 1
 fi
 
+if [ "${SOURCE_REPO_PATH}" == "${GITHUB_REPOSITORY}" ]; then
+  echo "::error::Source repository (template) and target repository are the same. It's not possibile to sync a template with itself."
+  exit 0
+fi
+
 SOURCE_REPO_HOSTNAME="${HOSTNAME:-github.com}"
 
 # In case of private template repository this will be overwritten
