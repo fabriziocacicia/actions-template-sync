@@ -1,6 +1,6 @@
 FROM alpine:3.15.4
 
-ARG GH_CLI_VER=2.8.0
+ARG GH_CLI_VER=2.10.0
 
 # labels
 LABEL \
