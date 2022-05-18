@@ -44,6 +44,11 @@ git config --global user.email "github-action@actions-template-sync.noreply.${SO
 git config --global user.name "${GITHUB_ACTOR}"
 git config --global pull.rebase false
 git config --global --add safe.directory /github/workspace
+
+if [[ ! -z "${GPG_SIGNING_KEY}" ]]; then
+  git config --global user.signingkey "${GPG_SIGNING_KEY}"
+fi
+
 echo "::endgroup::"
 
 # shellcheck source=src/sync_template.sh
