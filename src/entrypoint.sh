@@ -47,6 +47,8 @@ git config --global --add safe.directory /github/workspace
 
 if [[ ! -z "${GPG_SIGNING_KEY}" ]]; then
   git config --global user.signingkey "${GPG_SIGNING_KEY}"
+  git config --global commit.gpgsign true
+  
   git config --global gpg.program $(which gpg)
   echo "no-tty" >> ~/.gnupg/gpg.conf
 fi
