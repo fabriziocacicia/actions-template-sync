@@ -33,8 +33,6 @@ inputs:
     description: '[optional] the message of the commit. Default is "merge <template_repo_owner/template_repo_name> changes"'
   pr_title:
     description: '[optional] the title of the pr. Default is the same as commit_message input'
-  gpg_signing_key:
-    description: '[optional] the gpg signing_key. If not set commits will not be signed'
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
@@ -49,4 +47,3 @@ runs:
     COMMIT_SCOPE: ${{ inputs.commit_scope }}
     COMMIT_MESSAGE: ${{ inputs.commit_message }}
     PR_TITLE: ${{ inputs.pr_title }}
-    GPG_SIGNING_KEY: ${{ inputs.gpg_signing_key }}
