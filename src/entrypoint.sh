@@ -41,9 +41,11 @@ export SOURCE_REPO="${SOURCE_REPO_PREFIX}${SOURCE_REPO_PATH}"
 echo "::group::git init"
 echo "set git global configuration"
 
-if [[ -z $(git config --get user.signingkey) ]]; then
+if [[ -z "${GPG_SIGNING_KEY}" ]]; then
   git config --global user.email "github-action@actions-template-sync.noreply.${SOURCE_REPO_HOSTNAME}"
   git config --global user.name "${GITHUB_ACTOR}" 
+else
+  git config --global user.signingkey "${GPG_SIGNING_KEY}"
 fi
 
 git config --global pull.rebase false
