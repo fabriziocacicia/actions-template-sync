@@ -96,7 +96,7 @@ then
   git checkout -- .
 fi
 
-git commit -m "$COMMIT_MESSAGE"
+GIT_TRACE=1 git commit -m "$COMMIT_MESSAGE"
 
 echo "::debug::push changes"
 git push --set-upstream origin "${NEW_BRANCH}"
