@@ -45,6 +45,8 @@ if [[ -z "${GPG_SIGNING_KEY}" ]]; then
   git config --global user.email "github-action@actions-template-sync.noreply.${SOURCE_REPO_HOSTNAME}"
   git config --global user.name "${GITHUB_ACTOR}" 
 else
+  git config --global user.email "${GPG_COMMITTER_EMAIL}" 
+  git config --global user.name "${GPG_COMMITTER_NAME}" 
   git config --global user.signingkey "${GPG_SIGNING_KEY}"
 fi
 
