@@ -96,8 +96,6 @@ then
   git checkout -- .
 fi
 
-gpg --status-fd=2 -bsau C67EF0B80BEAB6A8
-
 git commit -m "$COMMIT_MESSAGE"
 
 echo "::debug::push changes"
