@@ -35,6 +35,11 @@ inputs:
     description: '[optional] the title of the pr. Default is the same as commit_message input'
   gpg_signing_key:
     description: '[optional] the gpg signing_key. If not set commits will not be signed'
+  gpg_committer_email:
+    description: '[optional] the email of the committer that will sign the commit. Used only if gpg_signing_key is provided'
+  gpg_committer_name:
+    description: '[optional] the name of the committer that will sign the commit. Used only if gpg_signing_key is provided'
+    
 runs:
   using: 'docker'
   image: 'src/Dockerfile'
@@ -50,3 +55,5 @@ runs:
     COMMIT_MESSAGE: ${{ inputs.commit_message }}
     PR_TITLE: ${{ inputs.pr_title }}
     GPG_SIGNING_KEY: ${{ inputs.gpg_signing_key }}
+    GPG_COMMITTER_EMAIL: ${{ inputs.gpg_committer_email }}
+    GPG_COMMITTER_NAME: ${{ inputs.gpg_committer_name }}
