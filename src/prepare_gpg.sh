@@ -2,7 +2,7 @@
 gpg-agent --daemon --allow-preset-passphrase --default-cache-ttl 60 --max-cache-ttl 60
 
 # Import GPG Key
-echo -n ${GPG_SIGNING_KEY} | base64 --decode | gpg --pinentry-mode loopback --passphrase-file <(echo ${GPG_PASSHPHRASE}) --import
+echo -n ${GPG_SIGNING_KEY} | base64 -d | gpg --pinentry-mode loopback --passphrase-file <(echo ${GPG_PASSHPHRASE}) --import
 GPG_FINGERPRINT=$(gpg -K --with-fingerprint | sed -n 4p | sed -e 's/ *//g')
 echo "${GPG_FINGERPRINT}:6:" | gpg --import-ownertrust
 
