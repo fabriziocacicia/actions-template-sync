@@ -3,7 +3,7 @@
 ######################################
 FROM alpine:3.16.2 as dev
 
-ARG GH_CLI_VER=2.8.0
+ARG GH_CLI_VER=2.15.0
 
 # install packages
 RUN apk add --update --no-cache bash make git zsh curl tmux musl openssh
@@ -25,7 +25,7 @@ WORKDIR /app
 #######################################
 # image for creating the documentation
 ######################################
-FROM node:18.7.0-alpine as docs
+FROM node:18.10.0-alpine as docs
 
 # install packages
 RUN apk add --update --no-cache bash make git zsh curl tmux
